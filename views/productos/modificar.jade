@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+
+  include  ../templates/nav 
+
+  div(class=['ui', 'container', 'grid','stackable'])
+    div(class=['teen', 'wide', 'column'])
+
+      h2(class=['ui', 'header','blue', 'dividing'])= 'Modifica Producto'
+
+      div(class='form-nuevoproducto')
+        form(class=['ui','form'] action='http://localhost:3000/editar' method='post')
+          div(class=['ui','field'])
+            label(for='nombre')='Nombre del Producto'
+            input(type='text' name='nombre' placeholder='Nombre' value=ListProductos[0].nombre)
+          div(class=['ui','two','fields'] )
+                div(class=['ui','field'])
+                  label(for='precio')='Precio'
+                  input(type='text' name='precio' placeholder='Precio' value=ListProductos[0].precio)
+                div(class=['ui','field'])
+                  label(for='stock')='Stock'
+                  input(type='text' name='stock' placeholder='Stock' value=ListProductos[0].stock)      
+                  input(type='hidden' name='id_producto' placeholder='Stock' value=ListProductos[0].id_producto)      
+          button(class=['ui','button','basic','black'])= 'Modificar'
+          div(class=['ui','message','error'])
+
+      if info != undefined
+        div(class=['ui','message','success'])
+          i(class=['close','icon'])
+          div(class=['header'])= 'Producto registrado'
+          p= info
+
+
+
+  
+  script(src='/javascripts/validation.js')  
+     

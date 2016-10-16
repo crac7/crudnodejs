@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+
+  include  ../templates/nav 
+  div(class=['ui', 'container', 'grid','stackable'])
+    div(class=['sixteen', 'wide', 'column'])
+       h3(class=['ui', 'header','blue', 'dividing'])= 'Lista de Productos'
+       table(class=['ui','table','celled'] id='tbl-productos')
+        thead
+          tr
+            th='ID'
+            th='Nombre'
+            th='Precio'
+            th='Stock'
+            th='Fecha de creacion'
+            th='Acciones'
+          tbody
+            each Productos in ListProductos
+              tr
+                td(id='id_producto')= Productos.id_producto
+                td= Productos.nombre
+                td= Productos.precio
+                td= Productos.stock
+                td= Productos.fecha_creacion
+                td
+                  a(class=['ui button basic icon'] href='#' data-inverted  data-tooltip='Eliminar' data-position='top center' id='btn-eliminar')
+                    i(class=['trash icon'])
+                  a(class=['ui button basic icon'] href='http://localhost:3000/ModificarProducto/'+Productos.id_producto data-inverted  data-tooltip='Modifciar' data-position='top center')
+                    i(class=['cut icon'])
+
+  script(src='/javascripts/productos.js')
+
+
+ 
